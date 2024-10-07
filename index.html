@@ -251,6 +251,33 @@
             overflow: hidden;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
+
+        .header-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0);
+            transition: background-color 0.5s ease;
+            pointer-events: none;
+        }
+
+        .header-image.darkened::after {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .header-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .header-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -331,6 +358,7 @@
                 const elements = document.querySelectorAll('.section, .profile-header, .collaborations, .contact');
                 const clickMe = document.querySelector('.click-me');
                 const headerText = document.querySelector('.header-text');
+                const headerImage = document.querySelector('.header-image');
                 
                 elements.forEach(element => {
                     element.addEventListener('click', function() {
@@ -340,8 +368,17 @@
 
                 clickMe.addEventListener('click', function() {
                     this.style.display = 'none';
-                    headerText.style.opacity = '1';
-                    headerText.style.transform = 'translateY(0)';
+                    headerText.classList.add('visible');
+                    headerImage.classList.add('darkened');
+                    
+                    setTimeout(() => {
+                        headerImage.classList.remove('darkened');
+                    }, 5000); // Remove darkening after 5 seconds
+                    
+                    setTimeout(() => {
+                        headerText.classList.remove('visible');
+                        this.style.display = 'block';
+                    }, 7000); // Hide text and show button after 7 seconds
                 });
             });
         </script>
