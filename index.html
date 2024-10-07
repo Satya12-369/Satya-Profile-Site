@@ -105,6 +105,16 @@
                 text-shadow: 0 0 10px #64aad9, 0 0 20px #64aad9, 0 0 30px #64aad9;
             }
         }
+        
+        .section, .profile-header, .collaborations, .contact {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover, .profile-header:hover, .collaborations:hover, .contact:hover,
+        .section.levitate, .profile-header.levitate, .collaborations.levitate, .contact.levitate {
+            transform: translateY(-10px);
+            box-shadow: 0 14px 28px rgba(100, 170, 217, 0.25), 0 10px 10px rgba(100, 170, 217, 0.22);
+        }
     </style>
 </head>
 <body>
@@ -166,5 +176,17 @@
     <div class="section">
         <p class="fun-fact">⚡ Fun Fact: Zach is also a musician, blending his creative expertise with technology to produce innovative, AI-enhanced tracks.</p>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.section, .profile-header, .collaborations, .contact');
+            
+            elements.forEach(element => {
+                element.addEventListener('click', function() {
+                    this.classList.toggle('levitate');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
