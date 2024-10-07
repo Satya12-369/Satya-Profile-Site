@@ -218,11 +218,42 @@
             content: "\A"; /* Add a line break after the strong element */
             white-space: pre;
         }
+
+        .click-me {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(100, 170, 217, 0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .click-me:hover {
+            background-color: rgba(100, 170, 217, 1);
+            box-shadow: 0 0 15px rgba(100, 170, 217, 0.8);
+        }
+
+        .spotify-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
     <div class="header-image">
         <img src="https://i.postimg.cc/zLMF2Xc3/image.jpg" alt="Header Image">
+        <div class="click-me">Click Me</div>
         <div class="header-text">
             <h1>Zach: Creator & Innovator</h1>
             <p>Exploring the intersection of creativity, technology, and entrepreneurship</p>
@@ -288,14 +319,26 @@
             <p class="fun-fact">⚡ Fun Fact: Zach is also a musician, blending his creative expertise with technology to produce innovative, AI-enhanced tracks.</p>
         </div>
 
+        <div class="spotify-player">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/292MXi08MShaQapLTFM4kd?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const elements = document.querySelectorAll('.section, .profile-header, .collaborations, .contact');
+                const clickMe = document.querySelector('.click-me');
+                const headerText = document.querySelector('.header-text');
                 
                 elements.forEach(element => {
                     element.addEventListener('click', function() {
                         this.classList.toggle('levitate');
                     });
+                });
+
+                clickMe.addEventListener('click', function() {
+                    this.style.display = 'none';
+                    headerText.style.opacity = '1';
+                    headerText.style.transform = 'translateY(0)';
                 });
             });
         </script>
