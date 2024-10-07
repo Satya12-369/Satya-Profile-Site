@@ -8,12 +8,36 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #64aad9; /* Changed from #e0e0e0 to match the blue color */
+            color: #64aad9;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.postimg.cc/zLMF2Xc3/image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        /* Dark overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
+            z-index: -1;
+        }
+
+        .content {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #121212;
+            position: relative;
+            z-index: 1;
         }
+
         h1, h2, h3 {
             color: #ffffff; /* Keeping headlines white */
         }
@@ -137,75 +161,77 @@
     </style>
 </head>
 <body>
-    <div class="profile-header">
-        <h1>About Zach (@Satya12-369 on GitHub)</h1>
-        <p>👋 A versatile creator, entrepreneur, and innovator with a passion for media production, marketing, and emerging technologies. Zach is focused on using his creative talents to build ventures that drive positive change while exploring cutting-edge technologies to enhance his work.</p>
-    </div>
+    <div class="content">
+        <div class="profile-header">
+            <h1>About Zach (@Satya12-369 on GitHub)</h1>
+            <p>👋 A versatile creator, entrepreneur, and innovator with a passion for media production, marketing, and emerging technologies. Zach is focused on using his creative talents to build ventures that drive positive change while exploring cutting-edge technologies to enhance his work.</p>
+        </div>
 
-    <div class="section">
-        <h2>Areas of Expertise</h2>
-        <ul>
-            <li><strong>Media Production:</strong> Proven track record in producing high-quality content across video, music, copywriting, marketing, and sales. Skilled in crafting compelling visual and narrative experiences that engage audiences and elevate brands.</li>
-            <li><strong>Entrepreneurship:</strong> Experience in raising capital and developing ventures with a positive humanitarian impact. Passionate about combining creativity, technology, and entrepreneurship to bring innovative ideas to life.</li>
-            <li><strong>Marketing & Sales:</strong> Adept at crafting strategies that resonate with audiences, driving engagement and growth across various platforms.</li>
-            <li><strong>Emerging Technologies:</strong> Actively exploring the applications of AI and other cutting-edge technologies to integrate into creative and business processes, enhancing efficiency and innovation.</li>
-        </ul>
-        
-        <div class="collaborations">
-            <h3>Notable Collaborations</h3>
-            <div class="collaboration-item">
-                <strong>Tai Lopez:</strong> Served as a top video producer, creating high-impact content that boosted engagement.
-            </div>
-            <div class="collaboration-item">
-                <strong>Mark Cuban & MIT University:</strong> Collaborated on high-profile projects that merge creativity with strategic innovation.
-            </div>
-            <div class="collaboration-item">
-                <strong>Jillian Jensen (X Factor star):</strong> Produced her best-performing music videos. (Look for Zakk Bates in credits, aka Zakk Bates Films.)
+        <div class="section">
+            <h2>Areas of Expertise</h2>
+            <ul>
+                <li><strong>Media Production:</strong> Proven track record in producing high-quality content across video, music, copywriting, marketing, and sales. Skilled in crafting compelling visual and narrative experiences that engage audiences and elevate brands.</li>
+                <li><strong>Entrepreneurship:</strong> Experience in raising capital and developing ventures with a positive humanitarian impact. Passionate about combining creativity, technology, and entrepreneurship to bring innovative ideas to life.</li>
+                <li><strong>Marketing & Sales:</strong> Adept at crafting strategies that resonate with audiences, driving engagement and growth across various platforms.</li>
+                <li><strong>Emerging Technologies:</strong> Actively exploring the applications of AI and other cutting-edge technologies to integrate into creative and business processes, enhancing efficiency and innovation.</li>
+            </ul>
+            
+            <div class="collaborations">
+                <h3>Notable Collaborations</h3>
+                <div class="collaboration-item">
+                    <strong>Tai Lopez:</strong> Served as a top video producer, creating high-impact content that boosted engagement.
+                </div>
+                <div class="collaboration-item">
+                    <strong>Mark Cuban & MIT University:</strong> Collaborated on high-profile projects that merge creativity with strategic innovation.
+                </div>
+                <div class="collaboration-item">
+                    <strong>Jillian Jensen (X Factor star):</strong> Produced her best-performing music videos. (Look for Zakk Bates in credits, aka Zakk Bates Films.)
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>What Zach is Looking For in Collaborations</h2>
-        <ul>
-            <li><strong>Creative Ventures:</strong> Interested in partnerships that merge creativity with technology, including media production and music, to explore innovative possibilities.</li>
-            <li><strong>Entrepreneurial Partnerships:</strong> Seeking opportunities to develop and grow ventures that positively impact society, especially those focused on humanitarian efforts.</li>
-            <li><strong>Technology Integration:</strong> Open to projects that leverage emerging technologies like AI to streamline creative processes and enhance business operations.</li>
-            <li><strong>Raising Capital for Humanitarian Ventures:</strong> Utilizing marketing and creative skills to support ventures that aim to make a positive humanitarian impact on the world.</li>
-        </ul>
-    </div>
+        <div class="section">
+            <h2>What Zach is Looking For in Collaborations</h2>
+            <ul>
+                <li><strong>Creative Ventures:</strong> Interested in partnerships that merge creativity with technology, including media production and music, to explore innovative possibilities.</li>
+                <li><strong>Entrepreneurial Partnerships:</strong> Seeking opportunities to develop and grow ventures that positively impact society, especially those focused on humanitarian efforts.</li>
+                <li><strong>Technology Integration:</strong> Open to projects that leverage emerging technologies like AI to streamline creative processes and enhance business operations.</li>
+                <li><strong>Raising Capital for Humanitarian Ventures:</strong> Utilizing marketing and creative skills to support ventures that aim to make a positive humanitarian impact on the world.</li>
+            </ul>
+        </div>
 
-    <div class="section">
-        <h2>Goals</h2>
-        <ul>
-            <li><strong>Create and Support Impactful Ventures:</strong> To combine creativity, technology, and entrepreneurship to drive positive humanitarian efforts and make a lasting impact on the world.</li>
-            <li><strong>Collaborate with Forward-Thinking Innovators:</strong> Seeking partnerships with individuals and organizations that share a vision for purpose-driven initiatives and sustainable success.</li>
-        </ul>
-    </div>
+        <div class="section">
+            <h2>Goals</h2>
+            <ul>
+                <li><strong>Create and Support Impactful Ventures:</strong> To combine creativity, technology, and entrepreneurship to drive positive humanitarian efforts and make a lasting impact on the world.</li>
+                <li><strong>Collaborate with Forward-Thinking Innovators:</strong> Seeking partnerships with individuals and organizations that share a vision for purpose-driven initiatives and sustainable success.</li>
+            </ul>
+        </div>
 
-    <div class="section contact">
-        <h2>📫 How to Reach Zach</h2>
-        <ul class="contact-list">
-            <li>Send a message on Discord: @sacredom369</li>
-            <li>Connect on Instagram: 140K followers @x.c0sm1c_r4bb1t_v1</li>
-            <li>LinkedIn: Ask for an invite</li>
-        </ul>
-    </div>
+        <div class="section contact">
+            <h2>📫 How to Reach Zach</h2>
+            <ul class="contact-list">
+                <li>Send a message on Discord: @sacredom369</li>
+                <li>Connect on Instagram: 140K followers @x.c0sm1c_r4bb1t_v1</li>
+                <li>LinkedIn: Ask for an invite</li>
+            </ul>
+        </div>
 
-    <div class="section">
-        <p class="fun-fact">⚡ Fun Fact: Zach is also a musician, blending his creative expertise with technology to produce innovative, AI-enhanced tracks.</p>
-    </div>
+        <div class="section">
+            <p class="fun-fact">⚡ Fun Fact: Zach is also a musician, blending his creative expertise with technology to produce innovative, AI-enhanced tracks.</p>
+        </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.section, .profile-header, .collaborations, .contact');
-            
-            elements.forEach(element => {
-                element.addEventListener('click', function() {
-                    this.classList.toggle('levitate');
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const elements = document.querySelectorAll('.section, .profile-header, .collaborations, .contact');
+                
+                elements.forEach(element => {
+                    element.addEventListener('click', function() {
+                        this.classList.toggle('levitate');
+                    });
                 });
             });
-        });
-    </script>
+        </script>
+    </div>
 </body>
 </html>
