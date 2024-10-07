@@ -11,7 +11,7 @@
             color: #64aad9;
             margin: 0;
             padding: 0;
-            background-image: url('https://i.postimg.cc/zLMF2Xc3/image.jpg');
+            background-image: url('https://i.postimg.cc/SsQ1snLL/image.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -40,7 +40,7 @@
 
         .header-image {
             position: relative;
-            height: 60vh;
+            height: 80vh; /* Increased height for better visibility */
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -55,8 +55,10 @@
             position: absolute;
             top: 0;
             left: 0;
-            filter: brightness(0.7);
+            filter: brightness(0.8);
             transition: transform 0.5s ease-in-out;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
         }
 
         .header-image:hover img {
@@ -252,7 +254,7 @@
 </head>
 <body>
     <div class="header-image">
-        <img src="https://i.postimg.cc/zLMF2Xc3/image.jpg" alt="Header Image">
+        <img src="https://i.postimg.cc/SsQ1snLL/image.png" alt="Header Image" loading="eager">
         <div class="click-me">Click Me</div>
         <div class="header-text">
             <h1>Zach: Creator & Innovator</h1>
