@@ -8,14 +8,14 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #e0e0e0;
+            color: #64aad9; /* Changed from #e0e0e0 to match the blue color */
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             background-color: #121212;
         }
         h1, h2, h3 {
-            color: #ffffff; /* Changed from #64aad9 to white */
+            color: #ffffff; /* Keeping headlines white */
         }
         h1 {
             border-bottom: 2px solid #64aad9;
@@ -114,6 +114,10 @@
         .section.levitate, .profile-header.levitate, .collaborations.levitate, .contact.levitate {
             transform: translateY(-10px);
             box-shadow: 0 14px 28px rgba(100, 170, 217, 0.25), 0 10px 10px rgba(100, 170, 217, 0.22);
+        }
+        
+        .profile-header p, .section p, .section li {
+            color: #64aad9; /* Ensuring all text in these sections is blue */
         }
     </style>
 </head>
