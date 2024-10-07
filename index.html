@@ -77,11 +77,6 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .header-image:hover .header-text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .header-text h1 {
             font-size: 3em;
             margin-bottom: 0.5em;
@@ -439,14 +434,23 @@
                     
                     setTimeout(() => {
                         headerImage.classList.remove('darkened');
+                        headerText.classList.remove('visible');
                         // Stop fireworks
                         fireworks.stop();
-                    }, 5000); // Remove darkening and stop fireworks after 5 seconds
-                    
-                    setTimeout(() => {
-                        headerText.classList.remove('visible');
-                        this.style.display = 'block';
-                    }, 7000); // Hide text and show button after 7 seconds
+                        
+                        // Fade out the text
+                        headerText.style.transition = 'opacity 1s ease-out';
+                        headerText.style.opacity = '0';
+                        
+                        // Show the "Click Me" button after everything has faded
+                        setTimeout(() => {
+                            clickMe.style.display = 'block';
+                            // Remove the transition to prevent any unexpected behavior
+                            headerText.style.transition = '';
+                            // Keep the text hidden
+                            headerText.style.opacity = '0';
+                        }, 1000);
+                    }, 5000); // Remove darkening, stop fireworks, and start fading text after 5 seconds
                 });
             });
         </script>
