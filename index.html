@@ -223,9 +223,9 @@
 
         .click-me {
             position: absolute;
-            top: 50%;
+            bottom: 50px; /* Position from the bottom */
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             background-color: rgba(100, 170, 217, 0.8);
             color: white;
             padding: 15px 30px;
@@ -239,6 +239,7 @@
         .click-me:hover {
             background-color: rgba(100, 170, 217, 1);
             box-shadow: 0 0 15px rgba(100, 170, 217, 0.8);
+            transform: translateX(-50%) scale(1.1);
         }
 
         .spotify-player {
