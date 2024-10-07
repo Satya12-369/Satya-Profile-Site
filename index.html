@@ -119,6 +119,21 @@
         .profile-header p, .section p, .section li {
             color: #64aad9; /* Ensuring all text in these sections is blue */
         }
+
+        .section li strong {
+            color: #9dccec; /* Lighter blue for bullet point titles */
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .section li {
+            margin-bottom: 10px; /* Add some space between list items */
+        }
+
+        .section li strong::after {
+            content: "\A"; /* Add a line break after the strong element */
+            white-space: pre;
+        }
     </style>
 </head>
 <body>
