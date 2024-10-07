@@ -15,7 +15,7 @@
             background-color: #121212;
         }
         h1, h2, h3 {
-            color: #64aad9;
+            color: #ffffff; /* Changed from #64aad9 to white */
         }
         h1 {
             border-bottom: 2px solid #64aad9;
@@ -89,11 +89,21 @@
             margin-bottom: 10px;
         }
         .collaboration-item strong {
-            color: #9dbe5a9b;
+            color: #64d995; /* Changed from #9dbe5a9b */
             font-size: 1.1em;
+            text-shadow: 0 0 5px #64aad9, 0 0 10px #64aad9, 0 0 15px #64aad9; /* Added glow effect */
+            animation: glow 1.5s ease-in-out infinite alternate; /* Added pulsating animation */
         }
         ul.contact-list {
             padding-left: 20px;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #64aad9, 0 0 10px #64aad9, 0 0 15px #64aad9;
+            }
+            to {
+                text-shadow: 0 0 10px #64aad9, 0 0 20px #64aad9, 0 0 30px #64aad9;
+            }
         }
     </style>
 </head>
