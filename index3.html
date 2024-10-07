@@ -42,12 +42,15 @@
             list-style-type: none;
             padding-left: 0;
         }
-        li:before {
+        ul li {
+            padding-left: 1.5em;
+            position: relative;
+        }
+        ul li:before {
             content: "•";
             color: #00ffff;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+            position: absolute;
+            left: 0;
         }
         .contact {
             background-color: #1e1e1e;
@@ -91,9 +94,6 @@
         .collaboration-item strong {
             color: #00ffff;
             font-size: 1.1em;
-        }
-        ul.contact-list {
-            padding-left: 20px;
         }
     </style>
 </head>
@@ -146,7 +146,7 @@
 
     <div class="section contact">
         <h2>📫 How to Reach Satya</h2>
-        <ul class="contact-list">
+        <ul>
             <li>Send a message on Discord: @sacredom369</li>
             <li>Connect on Instagram: 140K followers @x.c0sm1c_r4bb1t_v1</li>
             <li>LinkedIn: Ask for an invite</li>
@@ -154,6 +154,7 @@
     </div>
 
     <div class="section">
+        <p>🗿 Pronouns: He/Him</p>
         <p class="fun-fact">⚡ Fun Fact: Satya is also a musician, blending his creative expertise with technology to produce innovative, AI-enhanced tracks.</p>
     </div>
 </body>
