@@ -277,8 +277,8 @@
 
         .music-players {
             position: fixed;
-            top: 20px; /* Changed from bottom to top */
-            right: 20px;
+            top: 20px; /* Position at the top */
+            left: 20px; /* Position at the left */
             z-index: 1000;
             width: 225px;
         }
@@ -583,12 +583,20 @@
                 let yOffset = 0;
 
                 playerHeader.addEventListener("mousedown", dragStart);
+                playerHeader.addEventListener("touchstart", dragStart, { passive: true });
                 document.addEventListener("mousemove", drag);
+                document.addEventListener("touchmove", drag, { passive: true });
                 document.addEventListener("mouseup", dragEnd);
+                document.addEventListener("touchend", dragEnd);
 
                 function dragStart(e) {
-                    initialX = e.clientX - xOffset;
-                    initialY = e.clientY - yOffset;
+                    if (e.type === "touchstart") {
+                        initialX = e.touches[0].clientX - xOffset;
+                        initialY = e.touches[0].clientY - yOffset;
+                    } else {
+                        initialX = e.clientX - xOffset;
+                        initialY = e.clientY - yOffset;
+                    }
 
                     if (e.target === playerHeader) {
                         isDragging = true;
@@ -598,8 +606,14 @@
                 function drag(e) {
                     if (isDragging) {
                         e.preventDefault();
-                        currentX = e.clientX - initialX;
-                        currentY = e.clientY - initialY;
+
+                        if (e.type === "touchmove") {
+                            currentX = e.touches[0].clientX - initialX;
+                            currentY = e.touches[0].clientY - initialY;
+                        } else {
+                            currentX = e.clientX - initialX;
+                            currentY = e.clientY - initialY;
+                        }
 
                         xOffset = currentX;
                         yOffset = currentY;
