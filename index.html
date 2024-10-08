@@ -238,16 +238,6 @@
             transform: translateX(-50%) scale(1.1);
         }
 
-        .spotify-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        }
-
         .header-image::after {
             content: '';
             position: absolute;
@@ -285,21 +275,20 @@
             z-index: 1;
         }
 
-        .spotify-player p {
-            margin-top: 10px;
-            background-color: #1DB954;
-            border-radius: 20px;
-            padding: 5px;
+        .music-players {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 300px; /* Adjust this value as needed */
         }
 
-        .spotify-player a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .spotify-player a:hover {
-            text-decoration: underline;
+        .soundcloud-player {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            background-color: #301110; /* Updated to match the embed color */
+            padding: 10px;
         }
     </style>
 </head>
@@ -373,13 +362,14 @@
             <p class="fun-fact">⚡ Fun Fact: Zach is also a musician, blending his creative expertise with technology to produce innovative, AI-enhanced tracks.</p>
         </div>
 
-        <div class="spotify-player">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/292MXi08MShaQapLTFM4kd?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <p style="text-align: center; margin-top: 10px;">
-                <a href="https://open.spotify.com/track/292MXi08MShaQapLTFM4kd" target="_blank" rel="noopener noreferrer">
-                    Open in Spotify
-                </a>
-            </p>
+        <div class="music-players">
+            <div class="soundcloud-player">
+                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1673456421&color=%23301110&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                    <a href="https://soundcloud.com/tribaltrapmusic" title="Tribal Trap" target="_blank" style="color: #cccccc; text-decoration: none;">Tribal Trap</a> · 
+                    <a href="https://soundcloud.com/tribaltrapmusic/raizhelforte" title="RAIZHELL - FORTE" target="_blank" style="color: #cccccc; text-decoration: none;">RAIZHELL - FORTE</a>
+                </div>
+            </div>
         </div>
 
         <script>
