@@ -280,7 +280,7 @@
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            width: 225px; /* Changed to 3/4 of the original 300px width */
+            width: 225px;
         }
 
         .soundcloud-player {
@@ -288,21 +288,33 @@
             overflow: hidden;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             background-color: #301110;
-            transition: width 0.3s ease, height 0.3s ease;
+            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+            position: absolute;
+            cursor: move;
+            opacity: 1;
         }
 
         .player-header {
             background-color: #1a0a0a;
             padding: 5px;
             text-align: right;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .minimize-btn {
+        .player-controls {
+            display: flex;
+        }
+
+        .minimize-btn, .restore-btn {
             background: none;
             border: none;
             color: #cccccc;
             cursor: pointer;
             font-size: 16px;
+            margin-left: 5px;
         }
 
         .player-content {
@@ -314,12 +326,20 @@
         }
 
         .soundcloud-player.minimized {
-            width: 30px;
+            width: 225px;
             height: 30px;
         }
 
         .soundcloud-player.minimized .minimize-btn {
-            transform: rotate(90deg);
+            display: none;
+        }
+
+        .soundcloud-player.minimized .restore-btn {
+            display: inline;
+        }
+
+        .restore-btn {
+            display: none;
         }
 
         .spotify-link {
@@ -426,7 +446,11 @@
         <div class="music-players">
             <div class="soundcloud-player">
                 <div class="player-header">
-                    <button class="minimize-btn">_</button>
+                    <span>SoundCloud Player</span>
+                    <div class="player-controls">
+                        <button class="minimize-btn">-</button>
+                        <button class="restore-btn">□</button>
+                    </div>
                 </div>
                 <div class="player-content">
                     <iframe width="100%" height="225" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1884550863&color=%23b02488&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
@@ -537,15 +561,71 @@
                 });
 
                 const minimizeBtn = document.querySelector('.minimize-btn');
+                const restoreBtn = document.querySelector('.restore-btn');
                 const soundcloudPlayer = document.querySelector('.soundcloud-player');
+                const playerHeader = document.querySelector('.player-header');
 
                 minimizeBtn.addEventListener('click', function() {
-                    soundcloudPlayer.classList.toggle('minimized');
-                    if (soundcloudPlayer.classList.contains('minimized')) {
-                        minimizeBtn.textContent = '+';
-                    } else {
-                        minimizeBtn.textContent = '_';
+                    soundcloudPlayer.classList.add('minimized');
+                });
+
+                restoreBtn.addEventListener('click', function() {
+                    soundcloudPlayer.classList.remove('minimized');
+                });
+
+                // Make the player draggable
+                let isDragging = false;
+                let currentX;
+                let currentY;
+                let initialX;
+                let initialY;
+                let xOffset = 0;
+                let yOffset = 0;
+
+                playerHeader.addEventListener("mousedown", dragStart);
+                document.addEventListener("mousemove", drag);
+                document.addEventListener("mouseup", dragEnd);
+
+                function dragStart(e) {
+                    initialX = e.clientX - xOffset;
+                    initialY = e.clientY - yOffset;
+
+                    if (e.target === playerHeader) {
+                        isDragging = true;
                     }
+                }
+
+                function drag(e) {
+                    if (isDragging) {
+                        e.preventDefault();
+                        currentX = e.clientX - initialX;
+                        currentY = e.clientY - initialY;
+
+                        xOffset = currentX;
+                        yOffset = currentY;
+
+                        setTranslate(currentX, currentY, soundcloudPlayer);
+                    }
+                }
+
+                function dragEnd(e) {
+                    initialX = currentX;
+                    initialY = currentY;
+
+                    isDragging = false;
+                }
+
+                function setTranslate(xPos, yPos, el) {
+                    el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+                }
+
+                // Add transparency effect when hovering off
+                soundcloudPlayer.addEventListener('mouseleave', function() {
+                    this.style.opacity = '0.5';
+                });
+
+                soundcloudPlayer.addEventListener('mouseenter', function() {
+                    this.style.opacity = '1';
                 });
 
                 const lowResImage = document.querySelector('.header-image .low-res-image');
