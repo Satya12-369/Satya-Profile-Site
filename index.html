@@ -346,12 +346,17 @@
         .player-content iframe {
             height: 225px; /* Adjusted to 3/4 of the original 300px height */
         }
+
+        /* Add this new style for the low-res image */
+        .header-image .low-res-image {
+            filter: brightness(0.8) blur(2px);
+        }
     </style>
 </head>
 <body>
     <div class="fireworks-container"></div>
     <div class="header-image">
-        <img src="https://i.postimg.cc/SsQ1snLL/image.png?w=1024" alt="Header Image" loading="eager">
+        <img class="low-res-image" src="https://i.postimg.cc/SsQ1snLL/image.png?w=341" alt="Header Image" loading="eager">
         <div class="click-me">Click Me</div>
         <div class="header-text">
             <h1>Zach: Creator & Innovator</h1>
@@ -542,6 +547,18 @@
                         minimizeBtn.textContent = '_';
                     }
                 });
+
+                const lowResImage = document.querySelector('.header-image .low-res-image');
+                
+                // Load the full resolution image in the background
+                const fullResImage = new Image();
+                fullResImage.src = 'https://i.postimg.cc/SsQ1snLL/image.png?w=1024';
+                
+                fullResImage.onload = function() {
+                    // Replace the low-res image with the full-res image
+                    lowResImage.src = fullResImage.src;
+                    lowResImage.classList.remove('low-res-image');
+                };
             });
         </script>
     </div>
