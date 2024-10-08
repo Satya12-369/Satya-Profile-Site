@@ -278,9 +278,9 @@
         }
 
         .music-players {
-            position: fixed;
-            top: 20px; /* Position at the top */
-            left: 20px; /* Position at the left */
+            position: fixed; /* Ensure the player is fixed */
+            top: 20px;
+            left: 20px;
             z-index: 1000;
             width: 225px;
         }
@@ -291,9 +291,8 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             background-color: #301110;
             transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
-            position: absolute;
             cursor: move;
-            opacity: 1;
+            opacity: 0.5; /* Default to 50% opacity */
             width: 225px; /* Ensure width is set */
         }
 
@@ -677,6 +676,16 @@
                     lowResImage.src = fullResImage.src;
                     lowResImage.classList.remove('low-res-image');
                 };
+
+                // Show player at full opacity on hover
+                soundcloudPlayer.addEventListener('mouseenter', function() {
+                    this.style.opacity = '1';
+                });
+
+                // Set opacity to 50% when not hovered
+                soundcloudPlayer.addEventListener('mouseleave', function() {
+                    this.style.opacity = '0.5';
+                });
             });
         </script>
     </div>
