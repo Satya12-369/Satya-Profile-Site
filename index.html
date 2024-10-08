@@ -280,15 +280,67 @@
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            width: 300px; /* Adjust this value as needed */
+            width: 150px; /* Reduced to half size */
         }
 
         .soundcloud-player {
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            background-color: #301110; /* Updated to match the embed color */
+            background-color: #301110;
+            transition: width 0.3s ease;
+        }
+
+        .player-header {
+            background-color: #1a0a0a;
+            padding: 5px;
+            text-align: right;
+        }
+
+        .minimize-btn {
+            background: none;
+            border: none;
+            color: #cccccc;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .player-content {
             padding: 10px;
+        }
+
+        .soundcloud-player.minimized .player-content {
+            display: none;
+        }
+
+        .soundcloud-player.minimized {
+            width: 30px;
+            height: 30px;
+        }
+
+        .soundcloud-player.minimized .minimize-btn {
+            transform: rotate(90deg);
+        }
+
+        .spotify-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .spotify-link a {
+            display: inline-block;
+            background-color: #1DB954;
+            color: white;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .spotify-link a:hover {
+            background-color: #1ed760;
         }
     </style>
 </head>
@@ -364,10 +416,20 @@
 
         <div class="music-players">
             <div class="soundcloud-player">
-                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1673456421&color=%23301110&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-                    <a href="https://soundcloud.com/tribaltrapmusic" title="Tribal Trap" target="_blank" style="color: #cccccc; text-decoration: none;">Tribal Trap</a> · 
-                    <a href="https://soundcloud.com/tribaltrapmusic/raizhelforte" title="RAIZHELL - FORTE" target="_blank" style="color: #cccccc; text-decoration: none;">RAIZHELL - FORTE</a>
+                <div class="player-header">
+                    <button class="minimize-btn">_</button>
+                </div>
+                <div class="player-content">
+                    <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1673456421&color=%23301110&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                    <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                        <a href="https://soundcloud.com/tribaltrapmusic" title="Tribal Trap" target="_blank" style="color: #cccccc; text-decoration: none;">Tribal Trap</a> · 
+                        <a href="https://soundcloud.com/tribaltrapmusic/raizhelforte" title="RAIZHELL - FORTE" target="_blank" style="color: #cccccc; text-decoration: none;">RAIZHELL - FORTE</a>
+                    </div>
+                    <div class="spotify-link">
+                        <a href="https://open.spotify.com/track/292MXi08MShaQapLTFM4kd" target="_blank" rel="noopener noreferrer">
+                            Open in Spotify
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -463,6 +525,18 @@
                             headerText.style.opacity = '0';
                         }, 1000);
                     }, 5000); // Remove darkening, stop fireworks, and start fading text after 5 seconds
+                });
+
+                const minimizeBtn = document.querySelector('.minimize-btn');
+                const soundcloudPlayer = document.querySelector('.soundcloud-player');
+
+                minimizeBtn.addEventListener('click', function() {
+                    soundcloudPlayer.classList.toggle('minimized');
+                    if (soundcloudPlayer.classList.contains('minimized')) {
+                        minimizeBtn.textContent = '+';
+                    } else {
+                        minimizeBtn.textContent = '_';
+                    }
                 });
             });
         </script>
