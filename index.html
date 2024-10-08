@@ -585,13 +585,16 @@
                 const restoreBtn = document.querySelector('.restore-btn');
                 const soundcloudPlayer = document.querySelector('.soundcloud-player');
                 const playerHeader = document.querySelector('.player-header');
+                const maximizeText = document.querySelector('.maximize-text');
 
                 minimizeBtn.addEventListener('click', function() {
                     soundcloudPlayer.classList.add('minimized');
+                    maximizeText.textContent = 'Maximize Me'; // Change text to "Maximize Me"
                 });
 
                 restoreBtn.addEventListener('click', function() {
                     soundcloudPlayer.classList.remove('minimized');
+                    maximizeText.textContent = 'Minimize Me'; // Change text to "Minimize Me"
                 });
 
                 // Make the player draggable
